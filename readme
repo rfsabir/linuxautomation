@@ -1,1 +1,29 @@
 
+You can use a loop to execute the ip addr add command for each IP address in the range you specified. Here's a simple way to do it in bash:
+
+bash
+
+#!/bin/bash
+
+# Define the base IP address and network interface
+BASE_IP="102.211.235."
+INTERFACE="bond0"
+
+# Loop through IP addresses from 1 to 14 and assign them to the interface
+for ((i=1; i<=14; i++)); do
+    sudo ip addr add $BASE_IP$i dev $INTERFACE
+done
+
+Save this script in a file, for example, add_ips.sh, and make it executable with the command:
+
+bash
+
+chmod +x add_ips.sh
+
+Then execute the script:
+
+bash
+
+./add_ips.sh
+
+This will add IP addresses 102.211.235.1 through 102.211.235.14 to the bond0 network interface.
